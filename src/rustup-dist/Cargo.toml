@@ -4,7 +4,6 @@ name = "rustup-dist"
 version = "0.6.1"
 authors = [ "Diggory Blake <diggsey@googlemail.com>" ]
 description = "Installation from a Rust distribution server"
-build = "build.rs"
 
 documentation = "http://rust-lang-nursery.github.io/rustup.rs/rustup_dist/index.html"
 homepage = "https://github.com/rust-lang-nursery/rustup.rs"
@@ -13,30 +12,7 @@ repository = "https://github.com/rust-lang-nursery/rustup.rs"
 license = "MIT OR Apache-2.0"
 
 [dependencies]
-regex = "0.1.41"
-itertools = "0.4.1"
-ole32-sys = "0.2.0"
-url = "1.1.0"
-tar = "0.4.0"
-flate2 = "0.2.9"
-tempdir = "0.3.4"
-walkdir = "0.1.5"
-toml = "0.1.27"
-sha2 = "0.1.2"
-rustup-utils = { path = "../rustup-utils", version = "0.6.1" }
 error-chain = "0.4.0"
-rustup-mock = { path = "../rustup-mock", version = "0.6.1" }
-
-[target."cfg(windows)".dependencies]
-winapi = "0.2.8"
-winreg = "0.3.2"
-user32-sys = "0.1.2"
-kernel32-sys = "0.2.1"
-gcc = "0.3.28"
-
-[target."cfg(not(windows))".dependencies]
-libc = "0.2.0"
 
 [lib]
 name = "rustup_dist"
-

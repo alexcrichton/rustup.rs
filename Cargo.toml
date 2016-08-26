@@ -15,62 +15,11 @@ keywords = ["multirust", "install", "proxy"]
 
 license = "MIT OR Apache-2.0"
 
-build = "build.rs"
-
-[features]
-
-default = ["curl-backend", "hyper-backend"]
-
-curl-backend = ["download/curl-backend"]
-hyper-backend = ["download/hyper-backend"]
-rustls-backend = ["download/rustls-backend"]
-
-# Include in the default set to disable self-update and uninstall.
-no-self-update = []
-
-# Used to change behavior of self-update and uninstall if installed via MSI 
-msi-installed = []
-
 [dependencies]
 rustup-dist = { path = "src/rustup-dist", version = "0.6.1" }
 rustup-utils = { path = "src/rustup-utils", version = "0.6.1" }
-download = { path = "src/download" }
 error-chain = "0.4.0"
-clap = "2.2.4"
-regex = "0.1.41"
-url = "1.1.0"
-term = "0.4.4"
-itertools = "0.4.1"
-time = "0.1.34"
-tempdir = "0.3.4"
-tempfile = "2.1.4"
 libc = "0.2.0"
-rand = "0.3.11"
-scopeguard = "0.1.2"
-rustc-serialize = "0.3"
-sha2 = "0.1.2"
-markdown = { git="https://github.com/Diggsey/markdown.rs.git" }
-toml = "0.1.27"
 
-[target."cfg(windows)".dependencies]
-winapi = "0.2.8"
-winreg = "0.3.2"
-user32-sys = "0.1.2"
-kernel32-sys = "0.2.1"
-
-[dev-dependencies]
-rustup-mock = { path = "src/rustup-mock", version = "0.6.1" }
-lazy_static = "0.1.15"
-
-[workspace]
-members = ["src/ca-loader", "src/download", "src/rustup-dist", "src/rustup-mock", "src/rustup-utils", "src/rustup-win-installer"]
-
-[lib]
-name = "rustup"
-path = "src/rustup/lib.rs"
-test = false # no unit tests
-
-[[bin]]
-name = "rustup-init"
-path = "src/rustup-cli/main.rs"
-test = false # no unit tests
+[profile.release]
+debug = true
