@@ -21,8 +21,10 @@ Get-FileHash .\target\${env:TARGET}\release\* | ForEach-Object {[io.file]::Write
 $dest = "dist\$env:TARGET"
 md -Force "$dest"
 cp target\${env:TARGET}\release\rustup-init.exe "$dest/"
+gzip -9 -k $dest\rustup-init.exe
 cp target\${env:TARGET}\release\rustup-init.exe.sha256 "$dest/"
 cp target\${env:TARGET}\release\rustup-setup.exe "$dest/"
+gzip -9 -k $dest\rustup-setup.exe
 cp target\${env:TARGET}\release\rustup-setup.exe.sha256 "$dest/"
 
 ls "$dest"

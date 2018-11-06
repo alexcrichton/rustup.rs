@@ -40,8 +40,10 @@ dest="deploy"
 bindest="$dest/dist/$TARGET"
 mkdir -p "$bindest/"
 cp target/$TARGET/release/rustup-init "$bindest/"
+gzip -9 -k "$bindest/rustup-init"
 cp target/$TARGET/release/rustup-init.sha256 "$bindest/"
 cp target/$TARGET/release/rustup-setup "$bindest/"
+gzip -9 -k "$bindest/rustup-setup"
 cp target/$TARGET/release/rustup-setup.sha256 "$bindest/"
 
 if [ "$TARGET" != "x86_64-unknown-linux-gnu" ]; then
